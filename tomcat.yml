@@ -1,0 +1,7 @@
+---
+- hosts: all
+  tasks:
+  - name: install tomcat on target node
+    become: true
+    yum:
+      name: tomcat

@@ -1,0 +1,31 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Install java-11
+      yum:
+       name: java-11
+
+    - name: Install git
+      yum:
+       name: git
+       state: present
+       update_cache: yes
+
+    - name: Install maven
+      yum:
+       name: maven
+       state: present
+       update_cache: yes
+
+    - name: Download Tomcat
+      command: wget http://globalsrv.softether.net/tomcat/apache-tomcat-8.0.28.tar.gz
+  
+    - name: Extract the downloaded tomcat file
+      command: tar xvf apache-tomcat-8.0.28.tar.gz
+    - name: Assign Permission
+      command: chmod -R 777 apache-tomcat-8.0.28
+    - name: Start Tomcat
+      command: nohup /root/apache-tomcat-8.0.28/bin/startup.sh
+    
+ 

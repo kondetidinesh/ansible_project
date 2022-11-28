@@ -1,0 +1,11 @@
+---
+  -
+    name: git installation
+    hosts: all
+    remote_user: root
+    tasks:
+       
+      -  name: git installation
+         yum: 
+             name: git
+             state: latest
